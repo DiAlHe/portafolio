@@ -1,0 +1,250 @@
+<section id="habilidades">
+  <div class="skills-inner">
+
+    <div class="section-label">
+      <span class="label-line"></span>
+      <span class="label-text">Habilidades</span>
+    </div>
+
+    <h2 class="skills-title">
+      <span class="reveal-text">Stack</span>
+      <span class="reveal-text accent-stroke">Tecnologico.</span>
+    </h2>
+
+    <div class="skills-grid">
+
+      <div class="skill-category" data-delay="0">
+        <div class="category-header">
+          <span class="category-icon">⬡</span>
+          <h3>Front-End</h3>
+        </div>
+        <ul class="skill-list">
+          <li><span class="skill-bar" data-width="95"></span><span>Angular</span></li>
+          <li><span class="skill-bar" data-width="80"></span><span>React</span></li>
+          <li><span class="skill-bar" data-width="70"></span><span>Flutter</span></li>
+          <li><span class="skill-bar" data-width="70"></span><span>Astro</span></li>
+          <li><span class="skill-bar" data-width="90"></span><span>Tailwind</span></li>
+        </ul>
+      </div>
+
+      <div class="skill-category" data-delay="0.15">
+        <div class="category-header">
+          <span class="category-icon">⬡</span>
+          <h3>Back-End</h3>
+        </div>
+        <ul class="skill-list">
+          <li><span class="skill-bar" data-width="95"></span><span>Node.js</span></li>
+          <li><span class="skill-bar" data-width="85"></span><span>Python / FastAPI</span></li>
+          <li><span class="skill-bar" data-width="70"></span><span>Django</span></li>
+          <li><span class="skill-bar" data-width="90"></span><span>Socket.io</span></li>
+          <li><span class="skill-bar" data-width="95"></span><span>APIs REST</span></li>
+        </ul>
+      </div>
+
+      <div class="skill-category" data-delay="0.3">
+        <div class="category-header">
+          <span class="category-icon">⬡</span>
+          <h3>Bases de Datos</h3>
+        </div>
+        <ul class="skill-list">
+          <li><span class="skill-bar" data-width="95"></span><span>MariaDB / MySQL</span></li>
+          <li><span class="skill-bar" data-width="90"></span><span>SQL Server</span></li>
+          <li><span class="skill-bar" data-width="70"></span><span>Oracle DB</span></li>
+          <li><span class="skill-bar" data-width="80"></span><span>PostgreSQL</span></li>
+        </ul>
+      </div>
+
+      <div class="skill-category" data-delay="0.45">
+        <div class="category-header">
+          <span class="category-icon">⬡</span>
+          <h3>Herramientas</h3>
+        </div>
+        <ul class="skill-list">
+          <li><span class="skill-bar" data-width="70"></span><span>Docker</span></li>
+          <li><span class="skill-bar" data-width="90"></span><span>Git / GitHub</span></li>
+          <li><span class="skill-bar" data-width="90"></span><span>OSRM / Leaflet</span></li>
+          <li><span class="skill-bar" data-width="80"></span><span>N8N / Figma</span></li>
+          <li><span class="skill-bar" data-width="90"></span><span>OCR / Scraping</span></li>
+          <li><span class="skill-bar" data-width="90"></span><span>OCR / Scraping</span></li>
+          <li><span class="skill-bar" data-width="80"></span><span>Google Cloud Vision API</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  #habilidades {
+    padding: 8rem 6rem;
+    background: rgba(255,255,255,0.01);
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .skills-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .label-line {
+    width: 40px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  .label-text {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .skills-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 8vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    margin-bottom: 5rem;
+  }
+
+  .reveal-text {
+    display: block;
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  .accent-stroke {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--color-accent);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 6rem;
+  }
+
+  .skill-category {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .category-icon {
+    color: var(--color-accent);
+    font-size: 0.9rem;
+  }
+
+  .category-header h3 {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .skill-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .skill-list li span:last-child {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .skill-bar {
+    display: block;
+    height: 2px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, var(--color-accent), var(--color-accent-2));
+    border-radius: 2px;
+    transition: width 1.2s ease;
+  }
+
+  .skill-bar.animated::after {
+    width: var(--bar-width);
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to('.skills-title .reveal-text', {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    stagger: 0.2,
+    ease: 'power4.out',
+    scrollTrigger: {
+      trigger: '#habilidades',
+      start: 'top 75%',
+    }
+  });
+
+  document.querySelectorAll('.skill-category').forEach((cat: any) => {
+    const delay = parseFloat(cat.getAttribute('data-delay') || '0');
+    gsap.to(cat, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      delay,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#habilidades',
+        start: 'top 70%',
+      }
+    });
+  });
+
+  document.querySelectorAll('.skill-bar').forEach((bar: any) => {
+    const width = bar.getAttribute('data-width');
+    bar.style.setProperty('--bar-width', width + '%');
+    ScrollTrigger.create({
+      trigger: bar,
+      start: 'top 90%',
+      onEnter: () => bar.classList.add('animated'),
+      once: true
+    });
+  });
+</script>

@@ -1,0 +1,212 @@
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <p class="hero-tag" id="hero-tag">Full-Stack Developer</p>
+    <h1 class="hero-title" id="hero-title">
+      <span class="line">DIEGO</span>
+      <span class="line accent">HERNANDEZ</span>
+    </h1>
+    <p class="hero-sub" id="hero-sub">
+      Desarrollo soluciones tecnológicas que optimizan procesos y generan impacto medible.<br/>
+      Web · Mobile · APIs · Automatización · Base de datos
+    </p>
+    <div class="hero-cta" id="hero-cta">
+      <a href="#proyectos" class="btn-primary">Ver proyectos</a>
+      <a href="#contacto" class="btn-secondary">Hablemos</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" id="hero-scroll">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<style>
+  #hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(230, 57, 70, 0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(244, 162, 97, 0.08) 0%, transparent 50%),
+      #0a0a0a;
+    z-index: 0;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(to bottom, transparent 60%, #0a0a0a 100%);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 2rem;
+  }
+
+  .hero-tag {
+    font-size: 0.8rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 15vw, 14rem);
+    line-height: 0.9;
+    letter-spacing: 4px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-title .line {
+    display: block;
+    opacity: 0;
+    transform: translateY(80px);
+  }
+
+  .hero-title .accent {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--color-accent);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    opacity: 0;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    opacity: 0;
+  }
+
+  .btn-primary {
+    padding: 1rem 2.5rem;
+    background: var(--color-accent);
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-2);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    padding: 1rem 2.5rem;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(230, 57, 70, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 2;
+    opacity: 0;
+  }
+
+  .hero-scroll span {
+    font-size: 0.65rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--color-accent), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+
+  @keyframes scrollPulse {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const tl = gsap.timeline({ delay: 0.3 });
+
+  tl.to('#hero-tag', {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: 'power3.out'
+  })
+  .to('.hero-title .line', {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    stagger: 0.15,
+    ease: 'power4.out'
+  }, '-=0.4')
+  .to('#hero-sub', {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: 'power3.out'
+  }, '-=0.5')
+  .to('#hero-cta', {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: 'power3.out'
+  }, '-=0.5')
+  .to('#hero-scroll', {
+    opacity: 1,
+    duration: 0.8,
+    ease: 'power3.out'
+  }, '-=0.3');
+</script>
