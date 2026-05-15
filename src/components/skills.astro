@@ -8,7 +8,7 @@
 
     <h2 class="skills-title">
       <span class="reveal-text">Stack</span>
-      <span class="reveal-text accent-stroke">Tecnologico.</span>
+      <span class="reveal-text accent-stroke">Tecnológico.</span>
     </h2>
 
     <div class="skills-grid">
@@ -20,10 +20,10 @@
         </div>
         <ul class="skill-list">
           <li><span class="skill-bar" data-width="95"></span><span>Angular</span></li>
-          <li><span class="skill-bar" data-width="80"></span><span>React</span></li>
-          <li><span class="skill-bar" data-width="70"></span><span>Flutter</span></li>
-          <li><span class="skill-bar" data-width="70"></span><span>Astro</span></li>
-          <li><span class="skill-bar" data-width="90"></span><span>Tailwind</span></li>
+          <li><span class="skill-bar" data-width="85"></span><span>React</span></li>
+          <li><span class="skill-bar" data-width="80"></span><span>Flutter</span></li>
+          <li><span class="skill-bar" data-width="90"></span><span>HTML / SCSS</span></li>
+          <li><span class="skill-bar" data-width="85"></span><span>Tailwind</span></li>
         </ul>
       </div>
 
@@ -34,10 +34,10 @@
         </div>
         <ul class="skill-list">
           <li><span class="skill-bar" data-width="95"></span><span>Node.js</span></li>
-          <li><span class="skill-bar" data-width="85"></span><span>Python / FastAPI</span></li>
-          <li><span class="skill-bar" data-width="70"></span><span>Django</span></li>
-          <li><span class="skill-bar" data-width="90"></span><span>Socket.io</span></li>
-          <li><span class="skill-bar" data-width="95"></span><span>APIs REST</span></li>
+          <li><span class="skill-bar" data-width="80"></span><span>Python / FastAPI</span></li>
+          <li><span class="skill-bar" data-width="75"></span><span>Django</span></li>
+          <li><span class="skill-bar" data-width="85"></span><span>Socket.io</span></li>
+          <li><span class="skill-bar" data-width="70"></span><span>APIs REST</span></li>
         </ul>
       </div>
 
@@ -47,10 +47,10 @@
           <h3>Bases de Datos</h3>
         </div>
         <ul class="skill-list">
-          <li><span class="skill-bar" data-width="95"></span><span>MariaDB / MySQL</span></li>
-          <li><span class="skill-bar" data-width="90"></span><span>SQL Server</span></li>
-          <li><span class="skill-bar" data-width="70"></span><span>Oracle DB</span></li>
-          <li><span class="skill-bar" data-width="80"></span><span>PostgreSQL</span></li>
+          <li><span class="skill-bar" data-width="90"></span><span>MariaDB / MySQL</span></li>
+          <li><span class="skill-bar" data-width="80"></span><span>SQL Server</span></li>
+          <li><span class="skill-bar" data-width="75"></span><span>Oracle DB</span></li>
+          <li><span class="skill-bar" data-width="70"></span><span>PostgreSQL</span></li>
         </ul>
       </div>
 
@@ -60,13 +60,12 @@
           <h3>Herramientas</h3>
         </div>
         <ul class="skill-list">
-          <li><span class="skill-bar" data-width="70"></span><span>Docker</span></li>
+          <li><span class="skill-bar" data-width="85"></span><span>Docker</span></li>
           <li><span class="skill-bar" data-width="90"></span><span>Git / GitHub</span></li>
-          <li><span class="skill-bar" data-width="90"></span><span>OSRM / Leaflet</span></li>
-          <li><span class="skill-bar" data-width="80"></span><span>N8N / Figma</span></li>
-          <li><span class="skill-bar" data-width="90"></span><span>OCR / Scraping</span></li>
-          <li><span class="skill-bar" data-width="90"></span><span>OCR / Scraping</span></li>
-          <li><span class="skill-bar" data-width="80"></span><span>Google Cloud Vision API</span></li>
+          <li><span class="skill-bar" data-width="75"></span><span>OSRM / Leaflet</span></li>
+          <li><span class="skill-bar" data-width="70"></span><span>N8N / Figma</span></li>
+          <li><span class="skill-bar" data-width="80"></span><span>OCR / Scraping</span></li>
+          <li><span class="skill-bar" data-width="75"></span><span>Google Cloud Vision API</span></li>
         </ul>
       </div>
 
@@ -97,6 +96,7 @@
     width: 40px;
     height: 1px;
     background: var(--color-accent);
+    flex-shrink: 0;
   }
 
   .label-text {
@@ -108,7 +108,7 @@
 
   .skills-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(4rem, 8vw, 8rem);
+    font-size: clamp(3.5rem, 8vw, 8rem);
     line-height: 0.9;
     letter-spacing: 2px;
     margin-bottom: 5rem;
@@ -201,6 +201,56 @@
 
   .skill-bar.animated::after {
     width: var(--bar-width);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    #habilidades {
+      padding: 6rem 3rem;
+    }
+
+    .skills-grid {
+      gap: 3rem 4rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #habilidades {
+      padding: 5rem 1.5rem;
+    }
+
+    .skills-title {
+      font-size: clamp(3rem, 10vw, 5rem);
+      margin-bottom: 3rem;
+    }
+
+    .accent-stroke {
+      -webkit-text-stroke: 1px var(--color-accent);
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .category-header {
+      margin-bottom: 1.25rem;
+    }
+
+    .skill-list {
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #habilidades {
+      padding: 4rem 1.25rem;
+    }
+
+    .skills-title {
+      font-size: clamp(2.5rem, 12vw, 4rem);
+      margin-bottom: 2.5rem;
+    }
   }
 </style>
 

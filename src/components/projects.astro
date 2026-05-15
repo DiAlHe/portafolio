@@ -19,8 +19,8 @@
           <span class="project-org">Secretaría de Infraestructura y Transporte</span>
           <h3 class="project-name">Sistema Caminos Productivos</h3>
           <p class="project-desc">
-            Sistema digital para gestión de solicitudes y seguimiento de proyectos viales. 
-            Eliminó desplazamientos de más de 8 horas mediante validación en línea 
+            Sistema digital para gestión de solicitudes y seguimiento de proyectos viales.
+            Eliminó desplazamientos de más de 8 horas mediante validación en línea
             y respaldo fotográfico georeferenciado.
           </p>
           <div class="project-impact">
@@ -56,8 +56,8 @@
           <span class="project-org">FHIS / Sedecoas</span>
           <h3 class="project-name">Sistema Ventanilla Única</h3>
           <p class="project-desc">
-            Plataforma end-to-end para digitalizar trámites empresariales. 
-            Gestioné todo el ciclo: requerimientos, base de datos, backend y frontend, 
+            Plataforma end-to-end para digitalizar trámites empresariales.
+            Gestioné todo el ciclo: requerimientos, base de datos, backend y frontend,
             reduciendo tiempos de respuesta y optimizando la gestión de procesos.
           </p>
           <div class="project-impact">
@@ -94,8 +94,8 @@
           <span class="project-org">FHIS / Sedecoas</span>
           <h3 class="project-name">Módulo de Solicitudes</h3>
           <p class="project-desc">
-            Sistema digital para centralizar solicitudes con registro de coordenadas 
-            en mapa interactivo, adjunto de fotografías y seguimiento completo del 
+            Sistema digital para centralizar solicitudes con registro de coordenadas
+            en mapa interactivo, adjunto de fotografías y seguimiento completo del
             proyecto con métricas en tiempo real.
           </p>
           <div class="project-impact">
@@ -132,8 +132,8 @@
           <span class="project-org">Consultoría</span>
           <h3 class="project-name">Sistema Proceso de Compras del Estado</h3>
           <p class="project-desc">
-            Sistema completo para la gestión del proceso de compras gubernamentales, 
-            con flujos de aprobación, reportería avanzada y trazabilidad 
+            Sistema completo para la gestión del proceso de compras gubernamentales,
+            con flujos de aprobación, reportería avanzada y trazabilidad
             de cada transacción.
           </p>
           <div class="project-impact">
@@ -160,44 +160,45 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="project-item" data-index="05">
-    <div class="project-number">05</div>
-    <div class="project-content">
-      <div class="project-info">
-        <span class="project-org">Proyecto Propio</span>
-        <h3 class="project-name">Sistema de Gestión de Negocios</h3>
-        <p class="project-desc">
-          Sistema de punto de venta desarrollado desde cero para la gestión 
-          integral de un negocio propio. Incluye inventario con método FIFO, 
-          control de caja, gestión de proveedores, préstamos, múltiples formas 
-          de pago, variaciones de productos, roles y permisos, y reportería avanzada.
-        </p>
-        <div class="project-impact">
-          <div class="impact-item">
-            <span class="impact-value">FIFO</span>
-            <span class="impact-label">Control de inventario inteligente</span>
+    <div class="project-item" data-index="05">
+      <div class="project-number">05</div>
+      <div class="project-content">
+        <div class="project-info">
+          <span class="project-org">Proyecto Propio</span>
+          <h3 class="project-name">Sistema de Gestión de Negocios</h3>
+          <p class="project-desc">
+            Sistema de punto de venta desarrollado desde cero para la gestión
+            integral de un negocio propio. Incluye inventario con método FIFO,
+            control de caja, gestión de proveedores, préstamos, múltiples formas
+            de pago, variaciones de productos, roles y permisos, y reportería avanzada.
+          </p>
+          <div class="project-impact">
+            <div class="impact-item">
+              <span class="impact-value">FIFO</span>
+              <span class="impact-label">Control de inventario inteligente</span>
+            </div>
+            <div class="impact-item">
+              <span class="impact-value">Full</span>
+              <span class="impact-label">Ciclo completo de negocio</span>
+            </div>
           </div>
-          <div class="impact-item">
-            <span class="impact-value">Full</span>
-            <span class="impact-label">Ciclo completo de negocio</span>
+          <div class="project-tech">
+            <span>Angular</span>
+            <span>FastAPI</span>
+            <span>PostgreSQL</span>
+            <span>SQLAlchemy</span>
           </div>
         </div>
-        <div class="project-tech">
-          <span>Angular</span>
-          <span>FastAPI</span>
-          <span>PostgreSQL</span>
-          <span>SQLAlchemy</span>
-        </div>
-      </div>
-      <div class="project-visual">
-        <div class="visual-placeholder v5">
-          <div class="visual-icon">🏪</div>
-          <span>Gestión de Negocios</span>
+        <div class="project-visual">
+          <div class="visual-placeholder v5">
+            <div class="visual-icon">🏪</div>
+            <span>Gestión de Negocios</span>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -223,6 +224,7 @@
     width: 40px;
     height: 1px;
     background: var(--color-accent);
+    flex-shrink: 0;
   }
 
   .label-text {
@@ -234,7 +236,7 @@
 
   .projects-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(4rem, 8vw, 8rem);
+    font-size: clamp(3.5rem, 8vw, 8rem);
     line-height: 0.9;
     letter-spacing: 2px;
   }
@@ -250,7 +252,6 @@
     -webkit-text-stroke: 2px var(--color-accent);
   }
 
-  /* PROJECT ITEMS */
   .project-item {
     position: relative;
     padding: 5rem 0;
@@ -297,7 +298,7 @@
 
   .project-name {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
     letter-spacing: 1px;
     line-height: 1;
     margin-bottom: 1.5rem;
@@ -318,12 +319,13 @@
     padding: 1.5rem 0;
     border-top: 1px solid rgba(255,255,255,0.05);
     border-bottom: 1px solid rgba(255,255,255,0.05);
+    flex-wrap: wrap;
   }
 
   .impact-value {
     display: block;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     color: var(--color-accent);
     letter-spacing: 1px;
   }
@@ -351,7 +353,6 @@
     border-radius: 1px;
   }
 
-  /* VISUAL */
   .visual-placeholder {
     aspect-ratio: 16/10;
     border-radius: 4px;
@@ -373,6 +374,7 @@
   .v2 { background: linear-gradient(135deg, rgba(244,162,97,0.1), rgba(10,10,10,0.8)); }
   .v3 { background: linear-gradient(135deg, rgba(76,201,240,0.1), rgba(10,10,10,0.8)); }
   .v4 { background: linear-gradient(135deg, rgba(114,9,183,0.1), rgba(10,10,10,0.8)); }
+  .v5 { background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(10,10,10,0.8)); }
 
   .visual-icon {
     font-size: 3.5rem;
@@ -384,6 +386,80 @@
     letter-spacing: 3px;
     color: var(--color-muted);
     text-transform: uppercase;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    #proyectos {
+      padding: 6rem 3rem;
+    }
+
+    .project-content {
+      gap: 3rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #proyectos {
+      padding: 5rem 1.5rem;
+    }
+
+    .projects-header {
+      margin-bottom: 3rem;
+    }
+
+    .accent-stroke {
+      -webkit-text-stroke: 1px var(--color-accent);
+    }
+
+    .project-item {
+      padding: 3rem 0;
+    }
+
+    .project-number {
+      font-size: 5rem;
+      top: 1rem;
+    }
+
+    .project-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .project-content.reverse {
+      direction: ltr;
+    }
+
+    .visual-placeholder {
+      aspect-ratio: 16/9;
+    }
+
+    .visual-icon {
+      font-size: 2.5rem;
+    }
+
+    .project-impact {
+      gap: 1.5rem;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #proyectos {
+      padding: 4rem 1.25rem;
+    }
+
+    .project-number {
+      font-size: 4rem;
+    }
+
+    .project-tech span {
+      font-size: 0.65rem;
+      padding: 0.3rem 0.65rem;
+    }
   }
 </style>
 

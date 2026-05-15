@@ -7,9 +7,9 @@
         <span class="label-text">Sobre mí</span>
       </div>
       <h2 class="about-title">
-        <span class="reveal-text">Soluciones</span>
-        <span class="reveal-text accent-stroke">Full-Stack</span>
-        <span class="reveal-text">de alto impacto.</span>
+        <span class="reveal-text">Desarrollo</span>
+        <span class="reveal-text accent-stroke">de soluciones</span>
+        <span class="reveal-text">escalables.</span>
       </h2>
       <div class="about-stats">
         <div class="stat">
@@ -105,7 +105,6 @@
     margin: 0 auto;
   }
 
-  /* LEFT */
   .section-label {
     display: flex;
     align-items: center;
@@ -117,6 +116,7 @@
     width: 40px;
     height: 1px;
     background: var(--color-accent);
+    flex-shrink: 0;
   }
 
   .label-text {
@@ -128,7 +128,7 @@
 
   .about-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-size: clamp(2.5rem, 5vw, 5.5rem);
     line-height: 1;
     letter-spacing: 2px;
     margin-bottom: 3rem;
@@ -159,14 +159,14 @@
 
   .stat-number {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     color: var(--color-accent);
     line-height: 1;
   }
 
   .stat-unit {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     color: var(--color-accent);
   }
 
@@ -178,7 +178,6 @@
     text-transform: uppercase;
   }
 
-  /* RIGHT */
   .reveal-card {
     opacity: 0;
     transform: translateX(60px);
@@ -219,7 +218,6 @@
     background: rgba(230, 57, 70, 0.05);
   }
 
-  /* MARQUEE */
   .marquee-wrapper {
     margin-top: 6rem;
     overflow: hidden;
@@ -247,6 +245,81 @@
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    #sobre-mi {
+      padding: 6rem 3rem;
+    }
+
+    .about-grid {
+      gap: 4rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #sobre-mi {
+      padding: 5rem 1.5rem;
+    }
+
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .about-title {
+      font-size: clamp(2.5rem, 10vw, 4rem);
+      margin-bottom: 2rem;
+    }
+
+    .accent-stroke {
+      -webkit-text-stroke: 1px var(--color-accent);
+    }
+
+    .reveal-card {
+      padding: 1.75rem;
+      transform: translateX(0);
+    }
+
+    .about-description {
+      font-size: 0.92rem;
+    }
+
+    .about-stats {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1.5rem 2rem;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      margin-left: 0;
+      display: block;
+    }
+
+    .marquee-wrapper {
+      margin-top: 3rem;
+    }
+
+    .marquee-track {
+      font-size: 1rem;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #sobre-mi {
+      padding: 4rem 1.25rem;
+    }
+
+    .reveal-card {
+      padding: 1.25rem;
+    }
+
+    .about-stats {
+      gap: 1rem;
+    }
+  }
 </style>
 
 <script>
@@ -255,7 +328,6 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Reveal título
   gsap.to('.reveal-text', {
     opacity: 1,
     y: 0,
@@ -268,7 +340,6 @@
     }
   });
 
-  // Reveal card
   gsap.to('.reveal-card', {
     opacity: 1,
     x: 0,
@@ -280,7 +351,6 @@
     }
   });
 
-  // Contadores animados
   document.querySelectorAll('.stat-number').forEach((el) => {
     const target = parseInt(el.getAttribute('data-target') || '0');
     ScrollTrigger.create({
