@@ -1,0 +1,184 @@
+---
+import { useTranslations, type Lang } from '../i18n/index.ts';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="habilidades" class="hab section">
+  <div class="container">
+    <div class="hab__head" data-reveal>
+      <span class="eyebrow">{t.hab.eyebrow}</span>
+      <h2 class="hab__title">
+        {t.hab.titleBefore} <span class="grad-text">{t.hab.titleHighlight}</span>
+      </h2>
+    </div>
+
+    <div class="hab__grid">
+
+      <div class="hab__cat" data-cat data-delay="0">
+        <div class="hab__cat-header">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 1L14 4.5V11.5L8 15L2 11.5V4.5Z" stroke="var(--acento)" stroke-width="1.2" fill="rgba(56,189,248,0.08)"/>
+          </svg>
+          <h3>{t.hab.cats[0]}</h3>
+        </div>
+        <ul class="hab__list">
+          <li><span class="hab__bar" data-width="95"></span><span>Angular / TypeScript</span></li>
+          <li><span class="hab__bar" data-width="85"></span><span>React / JavaScript</span></li>
+          <li><span class="hab__bar" data-width="80"></span><span>Flutter / Dart</span></li>
+          <li><span class="hab__bar" data-width="80"></span><span>Astro / TypeScript</span></li>
+          <li><span class="hab__bar" data-width="95"></span><span>HTML / SCSS</span></li>
+          <li><span class="hab__bar" data-width="95"></span><span>Tailwind CSS</span></li>
+        </ul>
+      </div>
+
+      <div class="hab__cat" data-cat data-delay="0.12">
+        <div class="hab__cat-header">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 1L14 4.5V11.5L8 15L2 11.5V4.5Z" stroke="var(--acento)" stroke-width="1.2" fill="rgba(56,189,248,0.08)"/>
+          </svg>
+          <h3>{t.hab.cats[1]}</h3>
+        </div>
+        <ul class="hab__list">
+          <li><span class="hab__bar" data-width="95"></span><span>Node.js / JavaScript</span></li>
+          <li><span class="hab__bar" data-width="80"></span><span>FastAPI / Python</span></li>
+          <li><span class="hab__bar" data-width="70"></span><span>Django / Python</span></li>
+          <li><span class="hab__bar" data-width="85"></span><span>Socket.io / Node.js</span></li>
+          <li><span class="hab__bar" data-width="65"></span><span>C++</span></li>
+          <li><span class="hab__bar" data-width="50"></span><span>Java</span></li>
+        </ul>
+      </div>
+
+      <div class="hab__cat" data-cat data-delay="0.24">
+        <div class="hab__cat-header">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 1L14 4.5V11.5L8 15L2 11.5V4.5Z" stroke="var(--acento)" stroke-width="1.2" fill="rgba(56,189,248,0.08)"/>
+          </svg>
+          <h3>{t.hab.cats[2]}</h3>
+        </div>
+        <ul class="hab__list">
+          <li><span class="hab__bar" data-width="90"></span><span>MariaDB / MySQL</span></li>
+          <li><span class="hab__bar" data-width="90"></span><span>SQL Server</span></li>
+          <li><span class="hab__bar" data-width="75"></span><span>Oracle DB</span></li>
+          <li><span class="hab__bar" data-width="80"></span><span>PostgreSQL</span></li>
+        </ul>
+      </div>
+
+      <div class="hab__cat" data-cat data-delay="0.36">
+        <div class="hab__cat-header">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 1L14 4.5V11.5L8 15L2 11.5V4.5Z" stroke="var(--acento)" stroke-width="1.2" fill="rgba(56,189,248,0.08)"/>
+          </svg>
+          <h3>{t.hab.cats[3]}</h3>
+        </div>
+        <ul class="hab__list">
+          <li><span class="hab__bar" data-width="80"></span><span>Docker</span></li>
+          <li><span class="hab__bar" data-width="90"></span><span>Git / GitHub</span></li>
+          <li><span class="hab__bar" data-width="90"></span><span>OSRM / Leaflet</span></li>
+          <li><span class="hab__bar" data-width="70"></span><span>N8N</span></li>
+          <li><span class="hab__bar" data-width="95"></span><span>Figma</span></li>
+          <li><span class="hab__bar" data-width="90"></span><span>OCR / Scraping / IA</span></li>
+          <li><span class="hab__bar" data-width="80"></span><span>GSAP</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .hab { background: rgba(255,255,255,0.008); border-top: 1px solid rgba(255,255,255,0.04); }
+
+  .hab__head { margin-bottom: clamp(40px, 6vw, 64px); }
+  .hab__title {
+    font-size: clamp(2.6rem, 6vw, 5rem);
+    font-weight: 700; letter-spacing: -0.03em; line-height: 0.95; margin-top: 16px;
+    opacity: 0; transform: translateY(48px);
+  }
+  @media (prefers-reduced-motion: reduce) { .hab__title { opacity: 1; transform: none; } }
+
+  .hab__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(32px, 5vw, 64px); }
+
+  .hab__cat { opacity: 0; transform: translateY(36px); }
+
+  .hab__cat-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 28px; padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .hab__cat-header h3 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--alba); font-weight: 600; }
+
+  .hab__list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+  .hab__list li { display: flex; flex-direction: column; gap: 6px; }
+  .hab__list li span:last-child { font-size: 12px; color: var(--niebla); letter-spacing: 1px; text-transform: uppercase; }
+
+  .hab__bar { display: block; height: 2px; background: rgba(255,255,255,0.06); border-radius: 2px; position: relative; overflow: hidden; }
+  .hab__bar::after {
+    content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 0%;
+    background: linear-gradient(to right, var(--verde), var(--acento));
+    border-radius: 2px; transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .hab__bar.animated::after { width: var(--bar-width); }
+
+  @media (max-width: 768px) {
+    .hab__grid { grid-template-columns: 1fr; gap: 40px; }
+    .hab__title { font-size: clamp(2.4rem, 10vw, 4rem); }
+  }
+</style>
+
+<script>
+  async function initHabilidades(): Promise<void> {
+    const section = document.getElementById('habilidades');
+    if (!section) return;
+
+    const run = async (): Promise<void> => {
+      const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+        import('gsap'),
+        import('gsap/ScrollTrigger'),
+      ]);
+      gsap.registerPlugin(ScrollTrigger);
+
+      const titulo = section.querySelector('.hab__title');
+      if (titulo) {
+        gsap.to(titulo, {
+          opacity: 1, y: 0, duration: 1, ease: 'power4.out',
+          scrollTrigger: { trigger: section, start: 'top 78%' },
+        });
+      }
+
+      section.querySelectorAll('[data-cat]').forEach((cat: any) => {
+        const delay = parseFloat(cat.getAttribute('data-delay') || '0');
+        gsap.to(cat, {
+          opacity: 1, y: 0, duration: 0.85, delay, ease: 'power3.out',
+          scrollTrigger: { trigger: section, start: 'top 72%' },
+        });
+      });
+
+      section.querySelectorAll('.hab__bar').forEach((bar: any) => {
+        bar.style.setProperty('--bar-width', (bar.getAttribute('data-width') || '0') + '%');
+        ScrollTrigger.create({
+          trigger: bar, start: 'top 92%',
+          onEnter: () => bar.classList.add('animated'),
+          once: true,
+        });
+      });
+    };
+
+    // Cargar GSAP solo cuando el usuario se acerca — fuera del critical path
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return;
+        io.disconnect();
+        run();
+      },
+      { rootMargin: '300px 0px' }
+    );
+    io.observe(section);
+  }
+
+  if (document.readyState !== 'loading') initHabilidades();
+  else document.addEventListener('DOMContentLoaded', initHabilidades);
+  document.addEventListener('astro:page-load', initHabilidades);
+</script>

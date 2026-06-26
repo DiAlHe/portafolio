@@ -1,0 +1,140 @@
+---
+import { useTranslations, languages, type Lang } from '../i18n/index.ts';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const links = [
+  { href: '#inicio',       label: t.nav.home },
+  { href: '#sobre-mi',    label: t.nav.about },
+  { href: '#experiencia', label: t.nav.experience },
+  { href: '#habilidades', label: t.nav.skills },
+  { href: '#contacto',    label: t.nav.contact },
+];
+
+const switchHref = lang === 'es' ? '/en/' : '/';
+const switchLabel = lang === 'es' ? 'Switch to English' : 'Cambiar a Español';
+---
+
+<header class="nav" id="nav">
+  <div class="nav__inner container">
+    <a href="#inicio" class="nav__brand" aria-label="Diego Hernandez">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <path d="M18 2 L32 9.5 L32 26.5 L18 34 L4 26.5 L4 9.5 Z" fill="rgba(56,189,248,0.08)" stroke="rgba(56,189,248,0.35)" stroke-width="1"/>
+        <text x="18" y="20" text-anchor="middle" dominant-baseline="middle"
+          font-family="Helvetica Neue, Arial, sans-serif" font-weight="800" font-size="11"
+          fill="#38BDF8" letter-spacing="-0.3">DH</text>
+      </svg>
+      <span class="nav__brand-name">Diego Hernandez</span>
+    </a>
+
+    <nav class="nav__links" aria-label={lang === 'en' ? 'Main navigation' : 'Navegación principal'}>
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+
+    <a class="nav__lang" href={switchHref} aria-label={switchLabel} title={switchLabel}>
+      <span class:list={['nav__lang-btn', { active: lang === 'es' }]}>ES</span>
+      <span class:list={['nav__lang-btn', { active: lang === 'en' }]}>EN</span>
+    </a>
+
+    <a href="#contacto" class="btn btn-primary nav__cta">{t.nav.cta}</a>
+
+    <button class="nav__burger" aria-label={lang === 'en' ? 'Open menu' : 'Abrir menú'} aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="nav__mobile" aria-label={lang === 'en' ? 'Mobile menu' : 'Menú móvil'}>
+    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    <a class="nav__lang nav__lang--mobile" href={switchHref} aria-label={switchLabel} title={switchLabel}>
+      <span class:list={['nav__lang-btn', { active: lang === 'es' }]}>ES</span>
+      <span class:list={['nav__lang-btn', { active: lang === 'en' }]}>EN</span>
+    </a>
+    <a href="#contacto" class="btn btn-primary">{t.nav.cta}</a>
+  </nav>
+</header>
+
+<style>
+  .nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 100;
+    transition: background 0.4s var(--ease), backdrop-filter 0.4s, border-color 0.4s;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: rgba(6, 11, 20, 0.78);
+    backdrop-filter: blur(14px) saturate(140%);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+  }
+  .nav__inner { display: flex; align-items: center; justify-content: space-between; height: var(--nav-h); gap: 8px; }
+
+  .nav__brand { display: flex; align-items: center; gap: 10px; }
+  .nav__brand-name { font-size: 14px; font-weight: 700; color: var(--alba); letter-spacing: 0.01em; }
+
+  .nav__links { display: flex; gap: 30px; }
+  .nav__links a {
+    font-size: 14px; font-weight: 500; color: var(--niebla);
+    letter-spacing: 0.01em; position: relative; transition: color 0.3s;
+  }
+  .nav__links a::after {
+    content: ''; position: absolute; left: 0; bottom: -6px; height: 2px; width: 0;
+    background: var(--acento); transition: width 0.3s var(--ease);
+  }
+  .nav__links a:hover { color: var(--alba); }
+  .nav__links a:hover::after { width: 100%; }
+  .nav__cta { padding: 11px 22px; font-size: 13px; }
+
+  /* Switcher de idioma — toggle pill (enlace único, siempre cambia de idioma) */
+  .nav__lang {
+    display: flex; align-items: center; gap: 2px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 10px; padding: 3px;
+    text-decoration: none;
+    transition: border-color 0.25s var(--ease);
+  }
+  .nav__lang:hover { border-color: rgba(56,189,248,0.3); }
+  .nav__lang-btn {
+    font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+    color: var(--niebla); padding: 6px 13px; border-radius: 8px;
+    transition: all 0.25s var(--ease);
+    user-select: none;
+  }
+  .nav__lang:hover .nav__lang-btn:not(.active) { color: var(--alba); background: rgba(255,255,255,0.07); }
+  .nav__lang-btn.active {
+    background: linear-gradient(135deg, var(--acento) 0%, var(--acento-d) 100%);
+    color: var(--cosmos);
+    box-shadow: 0 0 14px rgba(56,189,248,0.55), 0 2px 8px rgba(56,189,248,0.25);
+  }
+
+  .nav__burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 8px; }
+  .nav__burger span { display: block; width: 24px; height: 2px; background: var(--alba); transition: 0.3s var(--ease); }
+  .nav.menu-open .nav__burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav.menu-open .nav__burger span:nth-child(2) { opacity: 0; }
+  .nav.menu-open .nav__burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav__mobile {
+    display: none; flex-direction: column; gap: 4px;
+    background: rgba(6, 11, 20, 0.97); backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    max-height: 0; overflow: hidden;
+    padding: 0 var(--gutter);
+    transition: max-height 0.45s var(--ease), padding 0.45s var(--ease);
+  }
+  .nav__mobile > a { padding: 15px 4px; font-size: 17px; color: var(--alba); border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .nav__mobile .btn { margin-top: 16px; justify-content: center; border-bottom: none; }
+  .nav__lang--mobile {
+    padding: 20px 4px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    justify-content: flex-start;
+  }
+  .nav__lang--mobile .nav__lang-btn { padding: 9px 20px; font-size: 12px; }
+  .nav.menu-open .nav__mobile { max-height: 80svh; padding: 6px var(--gutter) 28px; }
+
+  @media (max-width: 860px) {
+    .nav__links, .nav__cta, .nav__lang:not(.nav__lang--mobile) { display: none; }
+    .nav__burger { display: flex; }
+    .nav__mobile { display: flex; }
+  }
+  @media (max-width: 480px) { .nav__brand-name { display: none; } }
+</style>

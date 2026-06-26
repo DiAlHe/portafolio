@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Hero from '../../components/hero.astro';
+import SobreMi from '../../components/SobreMi.astro';
+import Experiencia from '../../components/Experiencia.astro';
+import Habilidades from '../../components/Habilidades.astro';
+import Contacto from '../../components/Contacto.astro';
+import Footer from '../../components/Footer.astro';
+import { useTranslations } from '../../i18n/index.ts';
+
+const lang = 'en' as const;
+const t = useTranslations(lang);
+---
+
+<Layout title={t.seo.title} description={t.seo.description} lang={lang} locale={t.seo.locale}>
+  <Nav lang={lang} />
+  <main>
+    <Hero       lang={lang} />
+    <SobreMi   lang={lang} />
+    <Experiencia lang={lang} />
+    <Habilidades lang={lang} />
+    <Contacto  lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</Layout>

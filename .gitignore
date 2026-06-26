@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Imágenes hero originales sin comprimir (optimizadas en /images/opt/)
+public/images/img-hero-*.webp
+public/images/*.tmp

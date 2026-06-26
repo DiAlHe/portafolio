@@ -1,20 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/navbar.astro';
+import Nav from '../components/Nav.astro';
 import Hero from '../components/hero.astro';
-import About from '../components/about.astro';
-import Projects from '../components/projects.astro';
-import Skills from '../components/skills.astro';
-import Contact from '../components/contact.astro';
+import SobreMi from '../components/SobreMi.astro';
+import Experiencia from '../components/Experiencia.astro';
+import Habilidades from '../components/Habilidades.astro';
+import Contacto from '../components/Contacto.astro';
+import Footer from '../components/Footer.astro';
+import { useTranslations } from '../i18n/index.ts';
+
+const lang = 'es' as const;
+const t = useTranslations(lang);
 ---
 
-<Layout>
-  <Navbar />
+<Layout title={t.seo.title} description={t.seo.description} lang={lang} locale={t.seo.locale}>
+  <Nav lang={lang} />
   <main>
-    <Hero />
-    <About />
-    <Projects />
-    <Skills />
-    <Contact />
+    <Hero       lang={lang} />
+    <SobreMi   lang={lang} />
+    <Experiencia lang={lang} />
+    <Habilidades lang={lang} />
+    <Contacto  lang={lang} />
   </main>
+  <Footer lang={lang} />
 </Layout>

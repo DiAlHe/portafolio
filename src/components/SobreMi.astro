@@ -1,0 +1,125 @@
+---
+import { metricas } from '../data/proyectos.ts';
+import { iconos } from '../data/iconos.ts';
+import { useTranslations, type Lang } from '../i18n/index.ts';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="sobre section" id="sobre-mi">
+  <div class="container">
+    <div class="sobre__grid">
+      <div data-reveal>
+        <span class="eyebrow">{t.sobre.eyebrow}</span>
+        <h2 class="sobre__title display">{t.sobre.title}</h2>
+        <p class="sobre__text" set:html={t.sobre.p1} />
+        <p class="sobre__text" set:html={t.sobre.p2} />
+        <p class="sobre__text" set:html={t.sobre.p3} />
+        <div class="sobre__chips">
+          <span class="pill pill-acento">Angular</span>
+          <span class="pill pill-acento">Node.js</span>
+          <span class="pill pill-acento">Astro</span>
+          <span class="pill pill-verde">Python</span>
+          <span class="pill pill-verde">SQL</span>
+          <span class="pill pill-verde">React</span>
+          <span class="pill">Docker</span>
+          <span class="pill">Flutter</span>
+          <span class="pill">Figma</span>
+        </div>
+      </div>
+
+      <div class="metrics">
+        {metricas.map((m, i) => (
+          <div class="metric" data-reveal data-count={m.v} style={`--reveal-delay:${i * 90}ms`}>
+            <div class="metric__icon"><Fragment set:html={iconos[m.icono]()} /></div>
+            <div class="metric__v">{m.v}</div>
+            <div class="metric__l">{t.sobre.metricLabels[i]}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sobre { position: relative; overflow: hidden; }
+  .sobre::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 50% 50% at 88% 8%, rgba(56,189,248,0.07), transparent 60%);
+  }
+  .sobre__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+  .sobre__title { font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.05; color: var(--alba); margin: 18px 0 22px; }
+  .sobre__text { color: var(--niebla); font-size: 1.05rem; margin-bottom: 18px; line-height: 1.7; }
+  .sobre__text :global(strong) { color: var(--alba); font-weight: 700; }
+  .sobre__chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
+  .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .metric {
+    position: relative; overflow: hidden; padding: 26px 24px;
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: transform 0.45s var(--ease), border-color 0.45s;
+  }
+  .metric::after {
+    content: ""; position: absolute; inset: 0; opacity: 0;
+    background: radial-gradient(ellipse 80% 80% at 100% 0%, rgba(56,189,248,0.10), transparent 60%);
+    transition: opacity 0.5s;
+  }
+  .metric:hover { transform: translateY(-6px); border-color: rgba(56,189,248,0.35); }
+  .metric:hover::after { opacity: 1; }
+  .metric__icon {
+    width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center;
+    margin-bottom: 16px;
+    background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.25);
+  }
+  .metric__icon :global(svg) { width: 22px; height: 22px; }
+  .metric__icon :global(svg [data-draw]) { stroke-dasharray: var(--len, 80); stroke-dashoffset: var(--len, 80); transition: stroke-dashoffset 1s var(--ease); }
+  .metric.is-in .metric__icon :global(svg [data-draw]) { stroke-dashoffset: 0; }
+  .metric__v { font-size: clamp(1.9rem, 4.5vw, 2.7rem); font-weight: 700; color: var(--acento); letter-spacing: -0.02em; line-height: 1; }
+  .metric__l { font-size: 13px; color: var(--niebla); margin-top: 8px; }
+
+  @media (max-width: 860px)  { .sobre__grid { grid-template-columns: 1fr; } }
+  @media (max-width: 480px)  { .metrics { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  function initContadores(): void {
+    const clamp = (v: number, a: number, b: number): number => Math.max(a, Math.min(b, v));
+
+    function animate(card: Element): void {
+      const el = card.querySelector('.metric__v');
+      const raw = card.getAttribute('data-count') ?? '';
+      const m = raw.match(/^(\d+(?:\.\d+)?)(.*)$/);
+      if (!el || !m || raw.includes('/')) return;
+      const target = parseFloat(m[1]);
+      const suffix = m[2];
+      const decimals = (m[1].split('.')[1] ?? '').length;
+      const dur = 1100;
+      let start: number | null = null;
+      const step = (ts: number): void => {
+        if (start === null) start = ts;
+        const p = clamp((ts - start) / dur, 0, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target * eased).toFixed(decimals) + suffix;
+        if (p < 1) requestAnimationFrame(step); else el.textContent = raw;
+      };
+      requestAnimationFrame(step);
+    }
+
+    const cards = document.querySelectorAll('.metric[data-count]');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        (entries) => { entries.forEach((e) => { if (e.isIntersecting) animate(e.target); }); },
+        { threshold: 0.4 }
+      );
+      cards.forEach((c) => io.observe(c));
+    }
+  }
+
+  if (document.readyState !== 'loading') initContadores();
+  else document.addEventListener('DOMContentLoaded', initContadores);
+  document.addEventListener('astro:page-load', initContadores);
+</script>
