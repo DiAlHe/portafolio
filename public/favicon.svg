@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="10" fill="#060b18"/>
-  <path d="M32 6 L54 19 L54 45 L32 58 L10 45 L10 19 Z" fill="rgba(56,189,248,0.10)"/>
+  <path d="M32 6 L54 19 L54 45 L32 58 L10 45 L10 19 Z" fill="rgba(56,189,248,0.12)"/>
   <path d="M32 6 L54 19 L54 45 L32 58 L10 45 L10 19 Z" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linejoin="round"/>
   <text x="32" y="35" text-anchor="middle" dominant-baseline="middle"
     font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif"
